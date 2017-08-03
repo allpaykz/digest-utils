@@ -1,5 +1,7 @@
 ### Simple library that provides methods to generate SHA-1 SHA-512 and MD5 digest
 
+Briefly, look code [here](https://github.com/allpaykz/digest-utils/blob/master/src/main/java/SecurityUtils.java) and [here](https://github.com/allpaykz/digest-utils/blob/master/src/test/java/SecurityUtilsTest.java)
+
 # Motivation
 
 This library was inspired by problem with [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) library in Android. We noticed that we often use a small part of this library. This small part can be extracted to one little class
