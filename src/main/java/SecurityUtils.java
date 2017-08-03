@@ -12,29 +12,29 @@ public class SecurityUtils {
     private static final String MD5 = "MD5";
 
     /**
-     * Generate SHA512 hash from string.
+     * Generate SHA-512 digest from string.
      * <p>
      * It returns result in hex encoded format (Hexadecimal)
      *
-     * @param stringToHash
+     * @param stringToDigest Data to digest
      *
-     * @return encoded string in hexadecimal format
+     * @return SHA-512 digest as encoded string in hexadecimal format
      */
-    public static String sha512(final String stringToHash) {
-        return getDigestByAlgorithm(stringToHash, SHA_512);
+    public static String sha512(final String stringToDigest) {
+        return getDigestByAlgorithm(stringToDigest, SHA_512);
     }
 
     /**
-     * Generate SHA_1 hash from string.
+     * Generate SHA-1 digest from string.
      * <p>
      * It returns result in hex encoded format (Hexadecimal)
      *
-     * @param stringToHash
+     * @param stringToDigest Data to digest
      *
-     * @return encoded string in hexadecimal format
+     * @return SHA-1 digest as  encoded string in hexadecimal format
      */
-    public static String sha1(final String stringToHash) {
-        return getDigestByAlgorithm(stringToHash, SHA_1);
+    public static String sha1(final String stringToDigest) {
+        return getDigestByAlgorithm(stringToDigest, SHA_1);
     }
 
     /**
@@ -42,22 +42,22 @@ public class SecurityUtils {
      * <p>
      * It returns result in hex encoded format (Hexadecimal)
      *
-     * @param stringToHash
+     * @param stringToDigest Data to digest
      *
-     * @return encoded string in hexadecimal format
+     * @return MD5 digest as encoded string in hexadecimal format
      */
-    public static String md5(final String stringToHash) {
-        return getDigestByAlgorithm(stringToHash, MD5);
+    public static String md5(final String stringToDigest) {
+        return getDigestByAlgorithm(stringToDigest, MD5);
     }
 
     /**
-     * Generate digest hash from string and specified algorithm
+     * Generate digest from string and specified algorithm
      * <p>
-     * Throws RuntimeException if algorithm is not provided
+     * Throws RuntimeException if algorithm is not provided in runtime
      *
-     * @param stringToHash
-     * @param digestAlgorithm
-     * @return encoded string in hexadecimal format
+     * @param stringToHash Data to digest
+     * @param digestAlgorithm Algorithm name
+     * @return calculated digest as encoded string in hexadecimal format
      */
     private static String getDigestByAlgorithm(final String stringToHash, final String digestAlgorithm) {
         final MessageDigest md;
@@ -66,7 +66,7 @@ public class SecurityUtils {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             throw new RuntimeException(
-                "For some reasons algorithm not found. Normally this should never happend");
+                "For some reasons algorithm " +digestAlgorithm + " not found. Normally this should never happen");
         }
         md.update(stringToHash.getBytes());
         final byte byteData[] = md.digest();
