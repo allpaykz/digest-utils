@@ -20,3 +20,5 @@ Here is the [very nice deep explanation](https://stackoverflow.com/a/29833101/18
 The solution is to avoid using apache.commons.codec library. It is usually used only to calculate MD5, SHA512 or SHA1 digest in Android or other Java project.
  
 This project shows how to calculate digests using native Java SDK without **any** dependency
+
+The **only class** you need is [here](https://github.com/allpaykz/digest-utils/blob/master/src/main/java/SecurityUtils.java)
